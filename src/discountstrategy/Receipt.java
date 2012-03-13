@@ -1,5 +1,5 @@
 package discountstrategy;
-
+import java.text.NumberFormat;
 /**
  *
  * @author jlombardo
@@ -79,13 +79,14 @@ public class Receipt {
     public String getReceiptInfo() {
         double grandTotalPaid = 0;
         double grandTotalDiscount = 0;
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
         // Start receipt with customer info
         String info = "Cutomer ID: " + this.customer.getId() + "\n"
                 + "Customer Name: " + customer.getName() + "\n\n";
         
         // continue with line item info
-        info += "ID    Name            Qty     Price     Discount      SubTotal";
-        info += "================================================================";
+        info += "ID      Name     Qty    Price   Discount        SubTotal";
+        info += "\n================================================================\n";
         
         for(LineItem item : lineItems) {
             grandTotalPaid += item.getSubTotal();
@@ -93,6 +94,14 @@ public class Receipt {
             info += item.getLineItemData() + "\n";
         }
         
+        info += "\nTotal amount spent: ";
+        info += nf.format(grandTotalPaid);
+        info += "\nTotal discounts received: ";
+        info += nf.format(grandTotalDiscount);
+        
+                
+        //System.out.println("The Grand total comes to $" + grandTotalPaid);
+        //System.out.println("The total discount was $" + grandTotalDiscount);
         /// print grand totals
         
         return info;

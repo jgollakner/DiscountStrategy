@@ -11,9 +11,9 @@ public class LineItem {
     
     
     private Product[] productDb = {
-        new Product("A101","Hat",19.95, new QuantityDiscount()),
-        new Product("B101","Glove",25.95, new PercentDiscount()),
-        new Product("C101","Belt",9.25, new DollarDiscount())  
+        new Product("A101","Hat  ",19.95, new QuantityDiscount()),
+        new Product("B101","Glove",25.95,  new PercentDiscount()),
+        new Product("C101","Belt ",9.25,   new DollarDiscount())  
     };
 
     public LineItem(String productId, double qty) {
@@ -24,8 +24,8 @@ public class LineItem {
     
     public String getLineItemData() {
         return product.getId() + "    " + product.getName() + "    " 
-                + qty + "    " + product.getPrice() + "    "
-                + product.getDiscount(qty) + "    "
+                + qty + "    " + product.getPrice() + "  \t"
+                + product.getDiscount(qty) + "     \t"
                 + getSubTotal();
 //        return getProductId() + "    " + getName();
     }

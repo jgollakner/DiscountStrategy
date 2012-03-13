@@ -16,8 +16,8 @@ public class CashRegister {
         this.receipt = receipt;
     }
     
-     public void startNewSale(String custId) {
-        receipt = new Receipt(custId);
+     public void startNewSale(String customerId) {
+        receipt = new Receipt(customerId);
     }
     public void purchaseProduct(String productId, double qty) {
         receipt.addNewLineItem(productId, qty);
